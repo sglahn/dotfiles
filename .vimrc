@@ -1,7 +1,10 @@
+" https://github.com/tpope/vim-pathogen
+" Manage your 'runtimepath' with ease. In practical terms, pathogen.vim makes
+" it super easy to install plugins and runtime files in their own private
+" directories.
 execute pathogen#infect()
 
 "colors
-syntax enable
 syntax on
 filetype plugin indent on
 
