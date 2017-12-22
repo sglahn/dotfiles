@@ -42,11 +42,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export JAVA_HOME=$HOME/Software/java/java8/latest/
-
-export GRADLE_HOME=$HOME/Software/gradle/latest/
-
-export PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin
+export PATH=$PATH:$HOME/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
