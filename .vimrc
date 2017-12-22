@@ -16,6 +16,11 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
+" Use the Solarized Dark theme
+set background=dark
+colorscheme solarized
+let g:solarized_termtrans=1
+
 """""""""""""""""""""
 "spaces, tabs
 """""""""""""""""""""
@@ -71,7 +76,7 @@ set noswapfile
 """"""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
-hi StatusLine                  ctermfg=2     ctermbg=8     cterm=NONE
+hi StatusLine                  ctermfg=White     ctermbg=DarkBlue     cterm=NONE
 hi StatusLineNC                ctermfg=2     ctermbg=8     cterm=NONE
 " Format the status line
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %{fugitive#statusline()}\ \ Line:\ %l\ \ Column:\ %c
