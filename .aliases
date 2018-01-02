@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
 
+# for dotfile versioning
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+# Docker
+#----------------------------
+# list all containers
+alias dps='docker ps -a'
+# list all images
+alias di='docker images'
+# stop all containers
+function dstop() { docker stop $(docker ps -a -q); }
+# remove all containers
+function drm() { docker rm -v $(docker ps -a -q); }
+# remove all images
+function drmi() { docker rmi $(docker images -q); }
+# remove all dangeling volumes
+function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
+
+# Network
+# list all IPs
+alias ip='hostname -I'
