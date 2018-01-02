@@ -13,6 +13,6 @@
 [submodule ".vim/bundle/vim-rhubarb"]
 	path = .vim/bundle/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
-[submodule ".vim/bundle/vim-zenroom"]
-	path = .vim/bundle/vim-zenroom
-	url = https://github.com/amix/vim-zenroom.git
+[submodule ".vim/bundle/vim-zenroom2"]
+	path = .vim/bundle/vim-zenroom2
+	url = https://github.com/amix/vim-zenroom2.git
