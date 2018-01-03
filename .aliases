@@ -5,7 +5,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Terminal 
 #----------------------------
-lcd () { cd "$1" && ll; }
+lcd () { cd "$1" && ls; }
 mcd () { mkdir -p "$1" && cd "$1"; }
 
 # ls
@@ -15,8 +15,7 @@ if [ -n "$ZSH_VERSION" ]; then
 elif [ -n "$BASH_VERSION" ]; then
     colorflag=' --color=auto';
 fi    
-alias ls="ls $colorflag"
-alias ls='ls -GFh'
+alias ls="ls "$colorflag
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -38,7 +37,7 @@ alias gd="git diff"
 # git push
 alias gp="git push"
 # git commit
-alias gmc="git commit -m"
+alias gm="git commit -m"
 # remove all local branches which remote equivalent is gone
 function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }
 # git checkout
@@ -67,7 +66,9 @@ function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
 # Network
 # list all IPs
 if [[ "$(uname)" == "Darwin" ]]; then
-    function myip() { ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'; }
+    function ip() { ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'; }
 elif [[ "$(uname)" == "Linux" ]]; then
-    alias myip='hostname -I'
+    alias ip='hostname -I'
 fi
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+
