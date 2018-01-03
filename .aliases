@@ -21,7 +21,7 @@ alias l='ls -CF'
 
 # Git
 #----------------------------
-alias gout="git log @{u}.."
+alias gout="git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat"
 # jump back to to the last branch
 alias gback="git checkout -"
 
