@@ -2,16 +2,16 @@
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
-# append to the history file, don't overwrite it
-#shopt -s histappend
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-#shopt -s checkwinsize
+if hash shopt 2>/dev/null; then
+    # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
+    shopt -s checkwinsize
+    # append to the history file, don't overwrite it
+    shopt -s histappend
+fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -30,7 +30,15 @@ HISTFILESIZE=2000
 #    ;;
 #esac
 
+# Environemnt
+#-------------------------
+export EDITOR=/usr/bin/vim
+export PATH=$PATH:$HOME/bin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # Alias definitions
+#-------------------------
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
@@ -41,9 +49,4 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-export PATH=$PATH:$HOME/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
