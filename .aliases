@@ -3,7 +3,15 @@
 # for dotfile versioning
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-alias ls='ls --color=auto'
+# ls
+#----------------------------
+if [[ "$(uname)" == "Darwin" ]]; then
+    colorflag=' -GFh';
+elif [[ "$(uname)" == "Linux" ]]; then
+    colorflag=' --color=auto';
+fi    
+alias ls='ls' + $colorflag
+alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -11,14 +19,22 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Git
+#----------------------------
+alias gout="git log @{u}.."
+# jump back to to the last branch
+alias gback="git checkout -"
+
 # Docker
 #----------------------------
-# list all containers
-alias dps='docker ps -a'
+# list all running containers
+alias dps='docker ps'
+# list all running and stopped containers
+alias dpsa='docker ps -a'
 # list all images
 alias di='docker images'
 # stop all containers
-function dstop() { docker stop $(docker ps -a -q); }
+function dstop() { docker stop $(docker ps -q); }
 # remove all containers
 function drm() { docker rm -v $(docker ps -a -q); }
 # remove all images
@@ -28,4 +44,8 @@ function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
 
 # Network
 # list all IPs
-alias ip='hostname -I'
+if [[ "$(uname)" == "Darwin" ]]; then
+    function myip() { ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'; }
+elif [[ "$(uname)" == "Linux" ]]; then
+    alias myip='hostname -I'
+fi
