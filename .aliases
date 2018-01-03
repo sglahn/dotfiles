@@ -3,6 +3,11 @@
 # for dotfile versioning
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# Terminal 
+#----------------------------
+lcd () { cd "$1" && ll; }
+mcd () { mkdir -p "$1" && cd "$1"; }
+
 # ls
 #----------------------------
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -24,6 +29,23 @@ alias l='ls -CF'
 alias gout="git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat"
 # jump back to to the last branch
 alias gback="git checkout -"
+# git status
+alias gs="git status"
+# git branch
+alias gb="git branch -vv"
+# git diff
+alias gd="git diff"
+# git push
+alias gp="git push"
+# git commit
+alias gmc="git commit -m"
+# remove all local branches which remote equivalent is gone
+function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }
+# git checkout
+alias gc="git checkout"
+# git fetch
+alias gf="git fetch"
+function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
 
 # Docker
 #----------------------------
