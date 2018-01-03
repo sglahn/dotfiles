@@ -6,9 +6,11 @@ function collapse_pwd {
 
 if [ -n "$ZSH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "%F{green}"; else echo "%F{red}"; fi\`➜%F{green}"
-    PS1=$s' %n@%m: $(collapse_pwd) ' 
+    u="\`if [ $(whoami) == "root" ]; then echo "%F{red}"; fi\`";
+    PS1=$s$u' %n@%m: $(collapse_pwd) ' 
 elif [ -n "$BASH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "\\[\\033[32m\\]"; else echo "\\[\\033[31m\\]"; fi\`➜\\[\\033[32m\\]"
-    PS1=$s' \u@\h: $(collapse_pwd) ' 
+    u="\`if [ $(whoami) == "root" ]; then echo "\\[\\033[31m\\]"; fi\`";
+    PS1=$s$u' \u@\h: $(collapse_pwd) ' 
 fi
 
