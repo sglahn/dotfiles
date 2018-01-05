@@ -33,7 +33,9 @@ function f() {
 
 # Gradle
 #----------------------------
+# Gradle wrapper
 alias gw="./gradlew"
+# Gradlew wrapper clean build
 alias gwcb="./gradlew clean build"
 
 # Git
