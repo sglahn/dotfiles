@@ -33,8 +33,8 @@ function f() {
 
 # Gradle
 #----------------------------
-alias r="./gradlew"
-alias rcb="./gradlew clean build"
+alias gw="./gradlew"
+alias gwcb="./gradlew clean build"
 
 # Git
 #----------------------------
