@@ -44,7 +44,10 @@ function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' |
 alias gc="git checkout"
 # git fetch
 alias gf="git fetch"
+# get JIRA ticket number from branch name
 function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
+# git add all
+alias ga="git add ."
 
 # Docker
 #----------------------------
