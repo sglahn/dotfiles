@@ -87,6 +87,13 @@ function drmi() { docker rmi $(docker images -q); }
 # remove all dangeling volumes
 function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
 
+# Docker Compose
+#--------------------------
+# Docker compose
+alias dco='docker-compose'
+# Docker compose logs
+alias dcol="docker-compose logs -f --tail 100"
+
 # Network
 # list all IPs
 if [[ "$(uname)" == "Darwin" ]]; then
