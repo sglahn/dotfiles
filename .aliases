@@ -8,23 +8,33 @@ function finda() { grep --no-filename -i -a1 $@ ~/.aliases  | grep -v '^\s*$' ; 
 
 # Terminal 
 #----------------------------
-lcd () { cd "$1" && ls; }
-mcd () { mkdir -p "$1" && cd "$1"; }
-
-# ls
-#----------------------------
+# Change directory and list content
+function lcd() { cd "$1" && ls; }
+# Create directory and enter it
+function mcd() { mkdir -p "$1" && cd "$1"; }
 if [ -n "$ZSH_VERSION" ]; then
     colorflag=' -GFh';
 elif [ -n "$BASH_VERSION" ]; then
     colorflag=' --color=auto';
 fi    
+# ls
 alias ls="ls "$colorflag
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# find shorthand
+function f() {
+  find . -name "$1" 2>&1 | grep -v 'Permission denied'
+  }
+
+# Gradle
+#----------------------------
+alias r="./gradlew"
+alias rcb="./gradlew clean build"
 
 # Git
 #----------------------------
