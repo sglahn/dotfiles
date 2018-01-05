@@ -3,6 +3,9 @@
 # for dotfile versioning
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# search aliases
+function finda() { grep --no-filename -i -a1 $@ ~/.aliases  | grep -v '^\s*$' ; }
+
 # Terminal 
 #----------------------------
 lcd () { cd "$1" && ls; }
@@ -34,6 +37,8 @@ alias gs="git status"
 alias gb="git branch -vv"
 # git diff
 alias gd="git diff"
+# git diff last commit
+alias gdl="git diff --cached HEAD^"
 # git push
 alias gp="git push"
 # git commit
@@ -48,6 +53,10 @@ alias gf="git fetch"
 function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
 # git add all
 alias ga="git add ."
+# git log with graph
+alias gl="git log --graph --decorate --all --stat"
+# show last commit
+alias glast="git show HEAD~1"
 
 # Docker
 #----------------------------
