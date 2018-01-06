@@ -104,5 +104,5 @@ elif [[ "$(uname)" == "Linux" ]]; then
 fi
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # serve current directory via http
-alias serve='python3 -m http.server'
+function serve() { 'python3 -m http.server'; }
 
