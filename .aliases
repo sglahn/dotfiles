@@ -27,9 +27,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 # find shorthand
-function f() {
-  find . -name "$1" 2>&1 | grep -v 'Permission denied'
-  }
+function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied' }
+# ps
+function psa() { ps aux | grep "$1" }
 
 # Gradle
 #----------------------------
@@ -54,7 +54,7 @@ alias gdl="git diff --cached HEAD^"
 # git push
 alias gp="git push"
 # git commit
-alias gm="git commit -m"
+alias gcm="git commit -m"
 # remove all local branches which remote equivalent is gone
 function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }
 # git checkout
@@ -105,4 +105,11 @@ fi
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # serve current directory via http
 function serve() { 'python3 -m http.server'; }
+
+# tmux
+#----------------------------
+# tmux
+alias t='tmux'
+# tmux attach
+alias ta='tmux attach'
 
