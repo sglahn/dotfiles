@@ -27,9 +27,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 # find shorthand
-function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied' }
+function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
 # ps
-function psa() { ps aux | grep "$1" }
+function psa() { ps aux | grep "$1"; }
 
 # Gradle
 #----------------------------
@@ -64,9 +64,14 @@ alias gc="git checkout"
 # git fetch
 alias gf="git fetch"
 # get JIRA ticket number from branch name
-function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
+#function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
+function gjira() { git symbolic-ref --short -q HEAD  | grep -w -o "[A-Z]\{1,10\}-[0-9]\{1,\}" ; 
+    if [[ $? != 0 ]]; 
+        then echo "Error: Failed to retrieve id!"; 
+        exit 1;
+    fi; }
 # git commit with jira ticket id as prefix commit message"
-function gcmj() { git commit -m $(gjira)": "$1; }
+function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m $id": "$1; else echo "Error: Failed to retieve id!"; return 1; fi; }
 # git commit with "NO-TICKET:" as prefix in commit message
 function gcmn() { git commit -m "NO-TICKET: "$1; }
 # git add all
