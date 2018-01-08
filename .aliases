@@ -43,6 +43,8 @@ alias gwcb="./gradlew clean build"
 alias gout="git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat"
 # jump back to to the last branch
 alias gback="git checkout -"
+# undo commit
+alias gundo="git reset HEAD~"
 # git status
 alias gs="git status"
 # git branch
@@ -63,6 +65,10 @@ alias gc="git checkout"
 alias gf="git fetch"
 # get JIRA ticket number from branch name
 function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
+# git commit with jira ticket id as prefix commit message"
+function gcmj() { git commit -m $(gjira)": "$1; }
+# git commit with "NO-TICKET:" as prefix in commit message
+function gcmn() { git commit -m "NO-TICKET: "$1; }
 # git add all
 alias ga="git add ."
 # git log with graph
@@ -73,9 +79,9 @@ alias glast="git show HEAD~1"
 # Docker
 #----------------------------
 # list all running containers
-alias dps='docker ps'
+alias dps="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}'"
 # list all running and stopped containers
-alias dpsa='docker ps -a'
+alias dpsa="docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}'"
 # list all images
 alias di='docker images'
 # stop all containers
