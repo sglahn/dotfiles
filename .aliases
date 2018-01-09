@@ -64,18 +64,19 @@ alias gc="git checkout"
 # git fetch
 alias gf="git fetch"
 # get JIRA ticket number from branch name
-#function gjira() { git symbolic-ref --short -q HEAD  | sed 's/.*\(\/[A-Z]*-[0-9]*\).*/\1/' | cut -c 2-; }
 function gjira() { git symbolic-ref --short -q HEAD  | grep -w -o "[A-Z]\{1,10\}-[0-9]\{1,\}" ; 
     if [[ $? != 0 ]]; 
-        then echo "Error: Failed to retrieve id!"; 
-        exit 1;
+        then echo "Error: Failed to retrieve Jira Ticket Id from branch name!"; 
+        return 1;
     fi; }
 # git commit with jira ticket id as prefix commit message"
-function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m $id": "$1; else echo "Error: Failed to retieve id!"; return 1; fi; }
+function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m $id": "$1; else echo "Error: Failed to retieve Jira Ticket Id from branch name!"; return 1; fi; }
 # git commit with "NO-TICKET:" as prefix in commit message
 function gcmn() { git commit -m "NO-TICKET: "$1; }
 # git add all
-alias ga="git add ."
+alias gaa="git add ."
+# git add 
+alias gaa="git add"
 # git log with graph
 alias gl="git log --graph --decorate --all --stat"
 # show last commit
