@@ -30,7 +30,7 @@ Set a flag to hide files not explicitly tracked. So typing e.g. "config status" 
 config config --local status.showUntrackedFiles no
 ```
 
-## The Font
-http://sourcefoundry.org/hack/
+## The Font I Use
+[Hack](http://sourcefoundry.org/hack/)
 
 ## License
