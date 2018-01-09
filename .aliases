@@ -54,7 +54,9 @@ alias gd="git diff"
 # git diff last commit
 alias gdl="git diff --cached HEAD^"
 # git push
-alias gp="git push"
+alias gph="git push"
+# git pull
+alias gpl="git pull"
 # git commit
 alias gcm="git commit -m"
 # remove all local branches which remote equivalent is gone
