@@ -16,6 +16,7 @@ Clone into a bare repository in your home directory:
 git clone --bare https://github.com/sglahn/dotfiles.git $HOME/.cfg
 ```
 Create an alias in the current shell scope:
+```
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ```
 Checkout the actual content from the bare repository:
