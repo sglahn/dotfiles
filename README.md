@@ -24,7 +24,8 @@ Checkout the actual content from the bare repository:
 config checkout
 ```
 If this step fails move or delete the already existing files.
-Set a flag to hide files not explicitly tracked. So typing e.g. "config status" and other commands later, files we are not interested in tracking will not show up as untracked.
+
+Set a flag to hide files not explicitly tracked. So typing e.g. "config status" and other commands later, will not show up all files of your home directory as untracked:
 ```
 config config --local status.showUntrackedFiles no
 ```
