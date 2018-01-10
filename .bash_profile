@@ -41,3 +41,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# z
+if [ -f ~/.lib/z.sh ]; then
+    . ~/.lib/z.sh
+fi
+

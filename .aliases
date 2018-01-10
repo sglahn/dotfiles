@@ -34,39 +34,42 @@ function psa() { ps aux | grep "$1"; }
 # Gradle
 #----------------------------
 # Gradle wrapper
-alias gw="./gradlew"
+alias gw='./gradlew'
 # Gradlew wrapper clean build
-alias gwcb="./gradlew clean build"
+alias gwcb='./gradlew clean build'
 
 # Git
 #----------------------------
-alias gout="git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat"
+# Show outgoing changes, inspired by Mercurials hgout
+alias gout='git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat'
+# Show incmoing changes
+alias gin='git log ..@{u}'
 # jump back to to the last branch
-alias gback="git checkout -"
+alias gback='git checkout -'
 # undo commit
-alias gundo="git reset HEAD~"
+alias gundo='git reset HEAD~'
 # git status
-alias gs="git status"
+alias gs='git status'
 # git branch
-alias gb="git branch -vv"
+alias gb='git branch -vv'
 # git diff
-alias gd="git diff"
+alias gd='git diff'
 # git diff last commit
-alias gdl="git diff --cached HEAD^"
+alias gdl='git diff --cached HEAD^'
 # git push
-alias gph="git push"
+alias gph='git push'
 # git pull
-alias gpl="git pull"
+alias gpl='git pull'
 # git commit
-alias gcm="git commit -m"
+alias gcm='git commit -m'
 # remove all local branches which remote equivalent is gone
 function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }
 # git checkout
-alias gc="git checkout"
+alias gc='git checkout'
 # git fetch
-alias gf="git fetch"
+alias gf='git fetch'
 # get JIRA ticket number from branch name
-function gjira() { git symbolic-ref --short -q HEAD  | grep -w -o "[A-Z]\{1,10\}-[0-9]\{1,\}" ; 
+function gjira() { git symbolic-ref --short -q HEAD  | grep -w -Eo "[A-Z0-9]{1,10}-?[A-Z0-9]+-\d+" ; 
     if [[ $? != 0 ]]; 
         then echo "Error: Failed to retrieve Jira Ticket Id from branch name!"; 
         return 1;
@@ -76,13 +79,13 @@ function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m $id": "$1; e
 # git commit with "NO-TICKET:" as prefix in commit message
 function gcmn() { git commit -m "NO-TICKET: "$1; }
 # git add all
-alias gaa="git add ."
+alias gaa='git add .'
 # git add 
-alias gaa="git add"
+alias gaa='git add'
 # git log with graph
-alias gl="git log --graph --decorate --all --stat"
+alias gl='git log --graph --decorate --all --stat'
 # show last commit
-alias glast="git show HEAD~1"
+alias glast='git show HEAD~1'
 
 # Docker
 #----------------------------
