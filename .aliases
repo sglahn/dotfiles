@@ -43,7 +43,7 @@ alias gwcb='./gradlew clean build'
 # Show outgoing changes, inspired by Mercurials hgout
 alias gout='git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat'
 # Show incmoing changes
-alias gin='git log ..@{u}'
+alias gin='git log --pretty=oneline --abbrev-commit ..@{u} --stat'
 # jump back to to the last branch
 alias gback='git checkout -'
 # undo commit
