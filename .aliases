@@ -106,10 +106,31 @@ function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
 
 # Docker Compose
 #----------------------------
-# Docker compose
+# docker-compose
 alias dco='docker-compose'
-# Docker compose logs
-alias dcol="docker-compose logs -f --tail 100"
+# search for global compose file in ~/.docker-compose
+function findGlobalComposeFile() {
+    if [ -d ~/.docker-compose ]; then
+        find ~/.docker-compose -iname $1*;
+    fi
+}
+# docker-compose logs
+function findComposeFile() { 
+    if [ -z $1 ]; then
+        f='docker-compose.yml';
+    else
+       f=$(findGlobalComposeFile $1); 
+       if [[ -z $f ]]; 
+           then f=$1; 
+       fi; 
+   fi;   
+   echo $f;
+}
+function dcol() { f=$(findComposeFile $1); docker-compose -f $f logs -f --tail 100; }
+# docker-compose stop
+function dcos() { f=$(findComposeFile $1); docker-compose -f $f stop; }
+# docker-compose up
+function dcou() { f=$(findComposeFile $1); docker-compose -f $f up -d; }
 
 # Network
 #----------------------------
