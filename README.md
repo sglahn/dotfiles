@@ -1,4 +1,4 @@
-# Sebastian Glahn's Dotfiles
+# My Dotfiles
 This is a collection of scripts, function and dotfiles I use for customizing my development workflow I use on a day-to-day basis.
 My setup is inspired by the this [article](http://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/).
 
