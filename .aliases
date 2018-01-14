@@ -81,7 +81,9 @@ function gcmn() { git commit -m "NO-TICKET: "$1; }
 # git add all
 alias gaa='git add .'
 # git add 
-alias gaa='git add'
+alias ga='git add'
+# git merge 
+alias gm='git merge'
 # git log with graph
 alias gl='git log --graph --decorate --all --stat'
 # show last commit
