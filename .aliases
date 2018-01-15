@@ -3,11 +3,7 @@
 # for dotfile versioning
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Checkout/ Update all configuration Git submodules
-if [[ "$(uname)" == "Darwin" ]]; then
-    alias configsub='config submodule init && cat .gitmodules | grep  -Eo "\"(.)*\"" | cut -d "\"" -f 2 | xargs -I S /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --remote S'
-elif [[ "$(uname)" == "Linux" ]]; then
-    alias configsub='config submodule init && cat .gitmodules | grep  -Eo "\"(.)*\"" | cut -d "\"" -f 2 | xargs -i /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --remote {}'
-fi
+alias configsub='config submodule init && cat .gitmodules | grep  -Eo "\"(.)*\"" | cut -d "\"" -f 2 | xargs -I{} /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --remote {}'
 
 # search aliases
 function finda() { grep --no-filename -i -a1 $@ ~/.aliases  | grep -v '^\s*$' ; }
