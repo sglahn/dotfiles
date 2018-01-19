@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 #
-# Runs Goolge Cloud SDK as Docker container
+# Runs Google Cloud SDK as Docker container
 #
 VOLUME_CONTAINER_NAME=vc_gcloud
 VOLUME_CONTAINER_IMAGE=google/cloud-sdk:latest
