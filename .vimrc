@@ -86,3 +86,9 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %{fugitive#statusline(
 """"""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 map <C-e> :MRU<CR>
+
+""""""""""""""""""""""""""""""
+" NERDTree Plugin
+""""""""""""""""""""""""""""""
+" Show bookmarks on startup
+let NERDTreeShowBookmarks=1
