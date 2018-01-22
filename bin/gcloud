@@ -12,5 +12,7 @@ fi
 
 docker run --rm -ti \
     --volumes-from=$VOLUME_CONTAINER_NAME \
+    --net=host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     $IMAGE_NAME \
     gcloud $@
