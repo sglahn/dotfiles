@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Runs Gradle as Docker container
+#
+IMAGE_NAME=gradle:4.1-jdk8
+
+docker run --rm \
+    -v "$HOME"/.gradle:/home/gradle/.gradle \
+    -v "$PWD":/home/gradle/project \
+    -w /home/gradle/project \
+    $IMAGE_NAME \
+    gradle $@
+
