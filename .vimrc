@@ -4,11 +4,16 @@
 " directories.
 execute pathogen#infect()
 
+" Turns on "detection", "plugin" and "indent" at once
+" Detection: Each time a new or existing file is edited, Vim will try to recognize the type of the file and set the 'filetype' option. This will trigger the FileType event, which can be used to set the syntax highlighting, set options, etc.
+" Plugin: This actually loads the file "ftplugin.vim" in 'runtimepath'. The result is that when a file is edited its plugin file is loaded (if there is one for the detected filetype).
+" Indent: This actually loads the file "indent.vim" in 'runtimepath'. The result is that when a file is edited its indent file is loaded (if there is one for the detected filetype). indent-expression
 filetype plugin indent on
 
 """""""""""""""""""""
-"colors
+" Colors
 """""""""""""""""""""
+" Turn on color syntax highlighting
 syntax on
 
 " Enable 256 colors palette in Gnome Terminal
@@ -30,7 +35,7 @@ set tabstop=4
 set softtabstop=4
 " Use spaces instead of tabs
 set expandtab
-" Be smart when using tabs ;)
+" Ensures that tabs are only used for indentation, while spaces are used everywhere else
 set smarttab
 " Linebreak on 500 characters
 set lbr
@@ -86,9 +91,3 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %{fugitive#statusline(
 """"""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 map <C-e> :MRU<CR>
-
-""""""""""""""""""""""""""""""
-" NERDTree Plugin
-""""""""""""""""""""""""""""""
-" Show bookmarks on startup
-let NERDTreeShowBookmarks=1
