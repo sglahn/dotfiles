@@ -14,9 +14,11 @@ function finda() { grep --no-filename -i -a1 $@ ~/.aliases  | grep -v '^\s*$' ; 
 function lcd() { cd "$1" && ls; }
 # Create directory and enter it
 function mcd() { mkdir -p "$1" && cd "$1"; }
-if [ -n "$ZSH_VERSION" ]; then
+#if [ -n "$ZSH_VERSION" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
     colorflag=' -GFh';
-elif [ -n "$BASH_VERSION" ]; then
+#elif [ -n "$BASH_VERSION" ]; then
+elif [[ "$(uname)" == "Linux" ]]; then
     colorflag=' --color=auto';
 fi    
 # ls
