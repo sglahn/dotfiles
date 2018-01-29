@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-zenroom2"]
 	path = .vim/bundle/vim-zenroom2
 	url = https://github.com/amix/vim-zenroom2.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
