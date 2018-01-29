@@ -8,11 +8,11 @@ if [ -n "$ZSH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "%F{yellow}"; else echo "%F{red}"; fi\`➜%F{yellow}"
     u="\`if [ $(whoami) == "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
     c="%F{default}"
-    PS1=$s$u' %n'$c'@%m: $(collapse_pwd) ' 
+    PS1=$s$u' %n'$c'@%m: $(collapse_pwd): ' 
 elif [ -n "$BASH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "\\[\\033[33m\\]"; else echo "\\[\\033[31m\\]"; fi\`➜\\[\\033[33m\\]"
     u="\`if [ $(whoami) == "root" ]; then echo "\\[\\033[31m\\]"; else echo "\\[\\033[36m\\]"; fi\`";
     c="\\[\\033[0m\\]"
-    PS1=$s$u' \u'$c'@\h: $(collapse_pwd) ' 
+    PS1=$s$u' \u'$c'@\h: $(collapse_pwd): ' 
 fi
 

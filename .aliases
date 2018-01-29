@@ -161,3 +161,10 @@ alias t='tmux'
 # tmux attach
 alias ta='tmux attach'
 
+if type sdk > /dev/null 2>&1; then
+    # SDK man
+    #----------------------------
+    alias usejava9='sdk use java 9.0.1-oracle'
+    alias usejava8='sdk use java 8u161-oracle'
+fi
+

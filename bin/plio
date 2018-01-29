@@ -11,13 +11,19 @@ if [ ! "$(docker ps -a | grep $VOLUME_CONTAINER_NAME)" ]; then
 fi
 
 DEVICE=
-if [ -e /dev/ttyUSB0 ]; then
-    DEVICE="--device=/dev/ttyUSB0"
+if [[ "$(uname)" == "Darwin" ]]; then
+    echo "USB is not supported with xhyve hypervisor."
+    exit -1;
+elif [[ "$(uname)" == "Linux" ]]; then
+    if [ -e /dev/ttyUSB0 ]; then
+        DEVICE="--device=/dev/ttyUSB0"
+    fi
 fi
+
 if [ "$UPLOAD_PORT" ]; then
     DEVICE=$UPLOAD_PORT
 fi
-echo "Using upload port $DEVICE"
+echo "Using upload port: $DEVICE"
 
 docker run --rm \
     -v `pwd`:/workspace \
