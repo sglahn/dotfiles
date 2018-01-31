@@ -32,7 +32,8 @@ config config --local status.showUntrackedFiles no
 
 ## Dependencies
 ### Tmux
-Tmux comes with the Tmux Plugin Manager already installed. To install the rest of the Tmux plugins configured in the .tmux.conf file type <prefix> + I. The tmux-yank plugin has the following additional dependencies:
+Tmux comes with the Tmux Plugin Manager already installed. To install the rest of the Tmux plugins configured in the .tmux.conf file type <kbd>prefix</kbd>+<kbd>I</kbd>. The tmux-yank plugin has the following additional dependencies:
+
 On Linux:
 - xsel
 Install it with:
