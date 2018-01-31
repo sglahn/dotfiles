@@ -32,17 +32,15 @@ config config --local status.showUntrackedFiles no
 
 ## Dependencies
 ### Tmux
-Tmux comes with the Tmux Plugin Manager already installed. To install the rest of the Tmux plugins configured in the .tmux.conf file type <kbd>prefix</kbd>+<kbd>I</kbd>. The tmux-yank plugin has the following additional dependencies:
+Tmux comes with the Tmux Plugin Manager already installed. To install the rest of the Tmux plugins configured in the .tmux.conf file, type <kbd>prefix</kbd>+<kbd>I</kbd>. The tmux-yank plugin has the following additional dependencies:
 
 On Linux:
-- xsel
-Install it with:
+- xsel, install it with:
 ```
 sudo apt-get install xsel
 ```
 On OS X:
-- reattach-to-user-namespace
-Install it with:
+- reattach-to-user-namespace, install it with:
 ```
 brew install reattach-to-user-namespace
 ```
