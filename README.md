@@ -30,6 +30,11 @@ Set a flag to hide files not explicitly tracked. So typing e.g. "config status" 
 config config --local status.showUntrackedFiles no
 ```
 
+Update the submodules:
+```
+configsub
+```
+
 ## Dependencies
 ### Tmux
 Tmux comes with the Tmux Plugin Manager already installed. To install the rest of the Tmux plugins configured in the .tmux.conf file, type <kbd>prefix</kbd>+<kbd>I</kbd>. The tmux-yank plugin has the following additional dependencies:
