@@ -134,8 +134,8 @@ function findComposeFile() {
        else
            f=$f"/docker-compose.yml";
        fi; 
-   fi;   
-   echo $f;
+    fi;   
+    echo $f;
 }
 # docker-compose logs
 function dcol() { f=$(findComposeFile $1); docker-compose -f $f logs -f --tail 100; }
