@@ -23,6 +23,11 @@ export PATH=$PATH:$HOME/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# git bash completion
+if [ -f ~/.lib/git-completion.bash ]; then
+    . ~/.lib/git-completion.bash
+fi
+
 # Alias definitions
 #-------------------------
 if [ -f ~/.aliases ]; then

@@ -64,12 +64,16 @@ alias gdl='git diff --cached HEAD^'
 alias gph='git push'
 # git pull
 alias gpl='git pull'
+__git_complete gp _git_pull
 # git commit
 alias gcm='git commit -m'
 # remove all local branches which remote equivalent is gone
 function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }
+alias g='git'
+__git_complete g _git
 # git checkout
 alias gc='git checkout'
+__git_complete gc _git_checkout
 # git fetch
 alias gf='git fetch'
 # get JIRA ticket number from branch name
@@ -88,6 +92,7 @@ alias gaa='git add .'
 alias ga='git add'
 # git merge 
 alias gm='git merge'
+__git_complete gm __git_merge
 # git log with graph
 alias gl='git log --graph --decorate --all --stat'
 # show last commit
