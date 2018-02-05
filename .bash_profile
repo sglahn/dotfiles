@@ -24,9 +24,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # git bash completion
-if [ -f ~/.lib/git-completion.bash ]; then
-    . ~/.lib/git-completion.bash
-fi
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f ~/.lib/git-completion.bash ]; then
+        . ~/.lib/git-completion.bash
+    fi
+    __git_complete gp _git_pull
+    __git_complete g _git
+    __git_complete gc _git_checkout
+    __git_complete gm __git_merge
+fi    
 
 # Alias definitions
 #-------------------------
