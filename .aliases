@@ -93,6 +93,8 @@ alias gm='git merge'
 alias gl='git log --graph --decorate --all --stat'
 # show last commit
 alias glast='git show HEAD~1'
+# git number of commits per author on all branches
+alias gstat='git shortlog -s -n --all --no-merges'
 
 # Docker
 #----------------------------
