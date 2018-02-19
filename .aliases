@@ -173,3 +173,5 @@ if type sdk > /dev/null 2>&1; then
     alias usejava8='sdk use java 8u161-oracle'
 fi
 
+function httpc() { sed -n -e '/^'$1'/p' .lib/http_codes.csv | sed -e $'s/;/\\\n/g' | fold -w 81; }
+
