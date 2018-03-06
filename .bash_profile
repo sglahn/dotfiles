@@ -25,13 +25,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # git bash completion
 if [ -n "$BASH_VERSION" ]; then
-    if [ -f ~/.lib/git-completion.bash ]; then
-        . ~/.lib/git-completion.bash
+    if [ -f ~/.lib/git-bash-completion.bash ]; then
+        . ~/.lib/git-bash-completion.bash
+        __git_complete gp _git_pull
+        __git_complete g _git
+        __git_complete gc _git_checkout
+        __git_complete gm __git_merge
     fi
-    __git_complete gp _git_pull
-    __git_complete g _git
-    __git_complete gc _git_checkout
-    __git_complete gm __git_merge
 fi    
 
 # Alias definitions
