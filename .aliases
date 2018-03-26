@@ -41,6 +41,8 @@ function psa() { ps aux | grep "$1"; }
 alias gw='./gradlew'
 # Gradlew wrapper clean build
 alias gwcb='./gradlew clean build'
+# Gradle dependcy insight
+function gwdi() { ./gradlew dependencyInsight --configuration compile --dependency "$1"; }
 
 # Git
 #----------------------------
@@ -146,6 +148,13 @@ function dcol() { f=$(findComposeFile $1); docker-compose -f $f logs -f --tail 1
 function dcos() { f=$(findComposeFile $1); docker-compose -f $f stop; }
 # docker-compose up
 function dcou() { f=$(findComposeFile $1); docker-compose -f $f up -d; }
+
+# Maven
+#----------------------------
+# Maven clean install
+alias mci='mvn clean install'
+# Maven dependency tree
+alias mdep='mvn dependency:tree'
 
 # Network
 #----------------------------
