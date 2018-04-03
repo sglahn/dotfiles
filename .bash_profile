@@ -57,3 +57,9 @@ if [ -f ~/.lib/z.sh ]; then
     . ~/.lib/z.sh
 fi
 
+# sdkman
+export SDKMAN_DIR=~/.sdkman
+if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
+    . ~/.sdkman/bin/sdkman-init.sh
+fi    
+
