@@ -34,6 +34,12 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi    
 
+# sdkman
+export SDKMAN_DIR=~/.sdkman
+if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
+    . ~/.sdkman/bin/sdkman-init.sh
+fi    
+
 # Alias definitions
 #-------------------------
 if [ -f ~/.aliases ]; then
@@ -56,10 +62,3 @@ fi
 if [ -f ~/.lib/z.sh ]; then
     . ~/.lib/z.sh
 fi
-
-# sdkman
-export SDKMAN_DIR=~/.sdkman
-if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
-    . ~/.sdkman/bin/sdkman-init.sh
-fi    
-
