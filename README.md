@@ -50,6 +50,9 @@ On OS X:
 brew install reattach-to-user-namespace
 ```
 
+### SDKMAN!
+SDKMAN! is already configured in the .bash_profile and works for zsh and bash. To use it it has to be [installed](http://sdkman.io/install.html). 
+
 ## The Font I Use
 [Hack](http://sourcefoundry.org/hack/)
 
