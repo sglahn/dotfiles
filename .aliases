@@ -8,6 +8,12 @@ alias configsub='config submodule init && cat .gitmodules | grep  -Eo "\"(.)*\""
 # search aliases
 function finda() { grep --no-filename -i -a1 $@ ~/.aliases  | grep -v '^\s*$' ; }
 
+if [[ "$(uname)" == "Darwin" ]]; then
+    generic_open='open'
+elif [[ "$(uname)" == "Linux" ]]; then
+    generic_open='xdg-open'
+fi
+
 # Terminal 
 #----------------------------
 # Change directory and list content
@@ -185,5 +191,15 @@ if type sdk > /dev/null 2>&1; then
     alias usejava10='sdk use java 10.0.0-oracle'
 fi
 
+# Show description of HTTP Status Code
 function httpc() { sed -n -e '/^'$1'/p' .lib/http_codes.csv | sed -e $'s/;/\\\n/g' | fold -w 81; }
+
+# Open Browser and Google Search
+function google() { q="$@"; $generic_open https://google.com/search?q="$q"; }
+# Open Browser and Stack Overflow search
+function stackover() { q="$@"; $generic_open https://stackoverflow.com/search?q="$q"; }
+# Open Browser and Google Translate from German to English
+function gtoe() { q="$@"; q=${q// /%20}; $generic_open https://translate.google.com/#de/en/"$q"; }
+# Open Browser and Google Translate from English to German
+function etog() { q="$@"; q=${q// /%20}; $generic_open https://translate.google.com/#en/de/"$q"; }
 
