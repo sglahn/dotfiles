@@ -81,6 +81,22 @@ function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' |
 alias g='git'
 # git checkout
 alias gc='git checkout'
+# git clone and display/change credentials
+function gcl() { 
+    url=$1;
+    git clone "$url";
+    base=$(basename $url);
+    folder=${base%.*};
+    cd $folder;
+    u=`git config user.name`; 
+    e=`git config user.email`;
+    read -p "Use $u and $e for this repository? (y/n): " confirm && [[ $confirm == [nN] || $confirm == [nN][oO] ]] || cd .. && return 0;
+    read -p "Enter username: " u
+    read -p "Enter email: " e;
+    git config user.name "$u";
+    git config user.email "$e";
+    cd ..;
+}
 # git fetch
 alias gf='git fetch'
 # get JIRA ticket number from branch name
