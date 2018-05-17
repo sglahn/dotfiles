@@ -82,7 +82,7 @@ alias g='git'
 # git checkout
 alias gc='git checkout'
 # git clone and display/change credentials
-function gcl() { 
+function gclone() { 
     url=$1;
     git clone "$url";
     base=$(basename $url);
@@ -90,9 +90,15 @@ function gcl() {
     cd $folder;
     u=`git config user.name`; 
     e=`git config user.email`;
-    read -p "Use $u and $e for this repository? (y/n): " confirm && [[ $confirm == [nN] || $confirm == [nN][oO] ]] || cd .. && return 0;
-    read -p "Enter username: " u
-    read -p "Enter email: " e;
+    printf '%s ' "Use $u and $e for this repository? (y/n):"
+    read confirm;
+    if [[ $confirm == [yY] ]]; then
+        cd .. && return 0;
+    fi;    
+    printf '%s ' 'Enter username:'
+    read u
+    printf '%s ' 'Enter email:'
+    read e;
     git config user.name "$u";
     git config user.email "$e";
     cd ..;
