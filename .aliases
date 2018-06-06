@@ -179,6 +179,11 @@ function dcos() { f=$(findComposeFile $1); docker-compose -f $f stop; }
 # docker-compose up
 function dcou() { f=$(findComposeFile $1); docker-compose -f $f up -d; }
 
+# Kubernetes
+alias k='kubectl'
+function kcns() { kubectl config set-context $(kubectl config current-context) --namespace=$1; } 
+alias kns='kubectl config view | grep namespace:'
+
 # Maven
 #----------------------------
 # Maven clean install
