@@ -26,7 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 # Shell specific settings
 if [ -n "$BASH_VERSION" ]; then
     # Git
-    if [ -f ~/.lib/git-bash-completion.bash ]; then
+    if [ -f ~/.lib/completion/git/git-bash-completion.bash ]; then
         . ~/.lib/completion/git/git-bash-completion.bash
         __git_complete gp _git_pull
         __git_complete g _git
@@ -34,7 +34,7 @@ if [ -n "$BASH_VERSION" ]; then
         __git_complete gm __git_merge
     fi
     # GCloud
-    . ~/.lib/completion/gcloud/completion.bash.inc
+    . ~/.lib/completion/gcloud/kubectl.completion.bash
     . ~/.lib/completion/gcloud/path.bash.inc
 fi    
 if [ -n "$ZSH_VERSION" ]; then
