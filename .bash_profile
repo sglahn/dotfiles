@@ -23,16 +23,29 @@ export PATH=$PATH:$HOME/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# git bash completion
+# Shell specific settings
 if [ -n "$BASH_VERSION" ]; then
+    # Git
     if [ -f ~/.lib/git-bash-completion.bash ]; then
-        . ~/.lib/git-bash-completion.bash
+        . ~/.lib/completion/git/git-bash-completion.bash
         __git_complete gp _git_pull
         __git_complete g _git
         __git_complete gc _git_checkout
         __git_complete gm __git_merge
     fi
+    # GCloud
+    . ~/.lib/completion/gcloud/completion.bash.inc
+    . ~/.lib/completion/gcloud/path.bash.inc
 fi    
+if [ -n "$ZSH_VERSION" ]; then
+    # GCloud
+    . ~/.lib/completion/gcloud/completion.zsh.inc
+    . ~/.lib/completion/gcloud/path.zsh.inc
+fi
+
+# Google Cloud SDK
+GCLOUD_PATH=~/tools/google-cloud-sdk/bin
+if [ -d ~/tools/google-cloud-sdk/bin ]; then export PATH=$PATH:$GCLOUD_PATH; fi;
 
 # sdkman
 export SDKMAN_DIR=~/.sdkman
@@ -62,3 +75,4 @@ fi
 if [ -f ~/.lib/z.sh ]; then
     . ~/.lib/z.sh
 fi
+
