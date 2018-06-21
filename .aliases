@@ -180,8 +180,12 @@ function dcos() { f=$(findComposeFile $1); docker-compose -f $f stop; }
 function dcou() { f=$(findComposeFile $1); docker-compose -f $f up -d; }
 
 # Kubernetes
+#----------------------------
+# SHhort
 alias k='kubectl'
+# Change namespace
 function kcns() { kubectl config set-context $(kubectl config current-context) --namespace=$1; } 
+# Print current namespace
 alias kns='kubectl config view | grep namespace:'
 
 # Maven
@@ -199,7 +203,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" ]]; then
     alias ip='hostname -I'
 fi
+# Get Wan IP
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+# Come back when onlione
+function online() { while true; do; wanip > /dev/null 2>&1; if [ $? -eq 0 ]; then echo "Online"; break; fi; echo "Still offline."; sleep 10; done; }
 # serve current directory via http
 function serve() { python3 -m http.server; }
 
