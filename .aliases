@@ -49,8 +49,10 @@ alias fbysize='du -h -a --max-depth=1 | sort -h'
 alias gw='./gradlew'
 # Gradlew wrapper clean build
 alias gwcb='./gradlew clean build'
-# Gradle dependcy insight
-function gwdi() { ./gradlew dependencyInsight --configuration compile --dependency "$1"; }
+# Gradle dependency insight
+function gwdi() { ./gradlew dependencyInsight --configuration ${2:-compile} --dependency "$1"; }
+# Gradle HTML dependency report
+function gwhdr() { ./gradlew htmldependencyReport; $generic_open build/reports/project/dependencies/index.html }
 
 # Git
 #----------------------------
