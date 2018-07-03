@@ -207,8 +207,8 @@ elif [[ "$(uname)" == "Linux" ]]; then
 fi
 # Get Wan IP
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
-# Come back when onlione
-function online() { while true; do; wanip > /dev/null 2>&1; if [ $? -eq 0 ]; then echo "Online"; break; fi; echo "Still offline."; sleep 10; done; }
+# Come back when online
+function online() { while true; do wanip > /dev/null 2>&1; if [ $? -eq 0 ]; then echo "Online"; break; fi; echo "Still offline."; sleep 10; done; }
 # serve current directory via http
 function serve() { python3 -m http.server; }
 
