@@ -226,7 +226,10 @@ if type sdk > /dev/null 2>&1; then
 fi
 
 # Show description of HTTP Status Code
-function httpc() { sed -n -e '/^'$1'/p' .lib/http_codes.csv | sed -e $'s/;/\\\n/g' | fold -w 81; }
+function httpc() { sed -n -e '/^'$1'/p' ~/.lib/http_codes.csv | sed -e $'s/;/\\\n/g' | fold -w 81; }
+
+# Create random password
+function randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16}; echo; }
 
 # Open Browser and Google Search
 function google() { q="$@"; $generic_open https://google.com/search?q="$q"; }
