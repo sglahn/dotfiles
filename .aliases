@@ -52,7 +52,7 @@ alias gwcb='./gradlew clean build'
 # Gradle dependency insight
 function gwdi() { ./gradlew dependencyInsight --configuration ${2:-compile} --dependency "$1"; }
 # Gradle HTML dependency report
-function gwhdr() { ./gradlew htmldependencyReport; $generic_open build/reports/project/dependencies/index.html }
+function gwhdr() { ./gradlew htmldependencyReport; $generic_open build/reports/project/dependencies/index.html; }
 
 # Git
 #----------------------------
@@ -232,13 +232,3 @@ function httpc() { sed -n -e '/^'$1'/p' ~/.lib/http_codes.csv | sed -e $'s/;/\\\
 
 # Create random password
 function randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16}; echo; }
-
-# Open Browser and Google Search
-function google() { q="$@"; $generic_open https://google.com/search?q="$q"; }
-# Open Browser and Stack Overflow search
-function stackover() { q="$@"; $generic_open https://stackoverflow.com/search?q="$q"; }
-# Open Browser and Google Translate from German to English
-function gtoe() { q="$@"; q=${q// /%20}; $generic_open https://translate.google.com/#de/en/"$q"; }
-# Open Browser and Google Translate from English to German
-function etog() { q="$@"; q=${q// /%20}; $generic_open https://translate.google.com/#en/de/"$q"; }
-
