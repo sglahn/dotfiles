@@ -232,3 +232,6 @@ function httpc() { sed -n -e '/^'$1'/p' ~/.lib/http_codes.csv | sed -e $'s/;/\\\
 
 # Create random password
 function randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16}; echo; }
+
+# SHort clear
+alias c=clear
