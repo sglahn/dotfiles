@@ -33,7 +33,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # grep
-alias grep='grep --color=auto'
+if grep --color=auto "a" ~/README.md &> /dev/null; then
+    alias grep='grep --color=auto'
+fi
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 # find shorthand
