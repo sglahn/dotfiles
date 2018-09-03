@@ -158,7 +158,7 @@ alias dco='docker-compose'
 # search for folder in ~/.docker-compose
 function findGlobalComposeFile() {
     if [ -d ~/.docker-compose ]; then
-        find ~/.docker-compose -iname $1*;
+        find ~/.docker-compose -iname $1;
     fi
 }
 function findComposeFile() { 
