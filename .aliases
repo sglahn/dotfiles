@@ -33,7 +33,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # grep
-alias grep='grep --color=auto'
+if grep --color=auto "a" ~/.aliases &> /dev/null; then
+    alias grep='grep --color=auto'
+fi
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 # find shorthand
@@ -231,7 +233,11 @@ fi
 function httpc() { sed -n -e '/^'$1'/p' ~/.lib/http_codes.csv | sed -e $'s/;/\\\n/g' | fold -w 81; }
 
 # Create random password
-function randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16}; echo; }
+if [[ "$(uname)" == "Darwin" ]]; then
+    function pw() { echo "not implemented"; }
+elif [[ "$(uname)" == "Linux" ]]; then
+    function pw() { < /dev/urandom tr -dc _ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789- | head -c${1:-16}; echo; }
+fi
 
 # SHort clear
 alias c=clear
