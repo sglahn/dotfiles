@@ -91,3 +91,8 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %{fugitive#statusline(
 """"""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 map <C-e> :MRU<CR>
+map <F9> :set paste<CR>
+map <F10> :set nopaste<CR>
+imap <F9> <C-O>:set paste<CR>
+imap <F10> <nop>
+set pastetoggle=<F10>

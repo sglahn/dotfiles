@@ -224,9 +224,11 @@ alias ta='tmux attach'
 # SDK man
 #----------------------------
 if type sdk > /dev/null 2>&1; then
-    alias usejava8='sdk use java 8.0.161-oracle'
-    alias usejava9='sdk use java 9.0.4-oracle'
-    alias usejava10='sdk use java 10.0.0-oracle'
+    alias usejava8='sdk use java 8.0.181-oracle'
+    alias usejava9='sdk use java 9.0.4-open'
+    alias usejava10='sdk use java 10.0.2-open'
+    alias usejava11='sdk use java 11.ea.28-open'
+    alias usegraal='sdk use java 1.0.0-rc6-graal'
 fi
 
 # Show description of HTTP Status Code
