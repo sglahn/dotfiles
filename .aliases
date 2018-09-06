@@ -160,7 +160,7 @@ alias dco='docker-compose'
 # search for folder in ~/.docker-compose
 function findGlobalComposeFile() {
     if [ -d ~/.docker-compose ]; then
-        find ~/.docker-compose -iname $1*;
+        find ~/.docker-compose -iname $1;
     fi
 }
 function findComposeFile() { 
@@ -224,20 +224,18 @@ alias ta='tmux attach'
 # SDK man
 #----------------------------
 if type sdk > /dev/null 2>&1; then
-    alias usejava8='sdk use java 8.0.161-oracle'
-    alias usejava9='sdk use java 9.0.4-oracle'
-    alias usejava10='sdk use java 10.0.0-oracle'
+    alias usejava8='sdk use java 8.0.181-oracle'
+    alias usejava9='sdk use java 9.0.4-open'
+    alias usejava10='sdk use java 10.0.2-open'
+    alias usejava11='sdk use java 11.ea.28-open'
+    alias usegraal='sdk use java 1.0.0-rc6-graal'
 fi
 
 # Show description of HTTP Status Code
 function httpc() { sed -n -e '/^'$1'/p' ~/.lib/http_codes.csv | sed -e $'s/;/\\\n/g' | fold -w 81; }
 
 # Create random password
-if [[ "$(uname)" == "Darwin" ]]; then
-    function pw() { echo "not implemented"; }
-elif [[ "$(uname)" == "Linux" ]]; then
-    function pw() { < /dev/urandom tr -dc _ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789- | head -c${1:-16}; echo; }
-fi
+function pw() { cat /dev/urandom | env LC_CTYPE=C tr -dc _ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789- | head -c 16; echo; }
 
 # SHort clear
 alias c=clear
