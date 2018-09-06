@@ -30,7 +30,7 @@ Set a flag to hide files not explicitly tracked. So typing e.g. "config status" 
 config config --local status.showUntrackedFiles no
 ```
 
-Update the submodules:
+To update the submodules in the project first source the .aliases file and then type:
 ```
 configsub
 ```
