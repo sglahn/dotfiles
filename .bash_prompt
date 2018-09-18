@@ -4,15 +4,20 @@ function collapse_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
+ME=$USER
+if [ -z "$ME" ]; then
+    ME=`whoami`;
+fi
+
 if [ -n "$ZSH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "%F{yellow}"; else echo "%F{red}"; fi\`➜%F{yellow}"
-    user="\`if [ $USER == "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
+    user="\`if [ $ME == "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
     default="%F{default}"
     blue="%F{blue}"
     PS1=$s$user' %n@%m'$default':'$blue'$(collapse_pwd)'$default'$ ' 
 elif [ -n "$BASH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "\\[\\033[33m\\]"; else echo "\\[\\033[31m\\]"; fi\`➜\\[\\033[33m\\]"
-    user="\`if [ $USER == "root" ]; then echo "\\[\\033[31m\\]"; else echo "\\[\\033[36m\\]"; fi\`";
+    user="\`if [ $ME == "root" ]; then echo "\\[\\033[31m\\]"; else echo "\\[\\033[36m\\]"; fi\`";
     default="\\[\\033[0m\\]"
     blue="\\[\\033[34m\\]"
     PS1=$s$user' \u@\h'$default':'$blue'$(collapse_pwd)'$default'$ ' 

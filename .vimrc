@@ -26,6 +26,9 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 
+" make backspace work like most other programs
+set backspace=indent,eol,start
+
 """""""""""""""""""""
 "spaces, tabs
 """""""""""""""""""""
