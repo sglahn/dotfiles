@@ -239,5 +239,12 @@ function httpc() { sed -n -e '/^'$1'/p' ~/.lib/http_codes.csv | sed -e $'s/;/\\\
 # Create random password
 function pw() { cat /dev/urandom | env LC_CTYPE=C tr -dc _ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789- | head -c 16; echo; }
 
-# SHort clear
+# Short clear
 alias c=clear
+
+function smonitor() { echo "Remember: Type ~. to quit. "; sudo cu -l /dev/cu.SLAB_USBtoUART -s 115200; }
+
+# Create high CPU load, for 8 processors call "cpumeld 8"
+function cpumeld() { for c in {1..$1}; do; yes > /dev/null &; done; }
+function cpumeldstop() { killall yes; }
+
