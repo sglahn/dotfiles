@@ -12,26 +12,29 @@ My setup is inspired by the this [article](http://developer.atlassian.com/blog/2
 
 ## Installation 	
 Clone into a bare repository in your home directory:
-```
+```bash
 git clone --bare https://github.com/sglahn/dotfiles.git $HOME/.cfg
 ```
 Create an alias in the current shell scope:
-```
+```bash
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ```
 Checkout the actual content from the bare repository:
-```
+```bash
 config checkout
 ```
 If this step fails move or delete the already existing files.
 
 Set a flag to hide files not explicitly tracked. So typing e.g. "config status" and other commands later, will not show up all files of your home directory as untracked:
-```
+```bash
 config config --local status.showUntrackedFiles no
 ```
-
-To update the submodules in the project first source the .aliases file and then type:
+Source the aliases
+```bash
+source .aliases
 ```
+To update the submodules in the project first source the .aliases file and then type:
+```bash
 configsub
 ```
 
