@@ -36,11 +36,19 @@ if [ -n "$BASH_VERSION" ]; then
     # GCloud
     . ~/.lib/completion/gcloud/kubectl.completion.bash
     . ~/.lib/completion/gcloud/path.bash.inc
+    # Robot Operating System
+    if [ -d /opt/ros/melodic ]; then
+        . /opt/ros/melodic/setup.bash
+    fi    
 fi    
 if [ -n "$ZSH_VERSION" ]; then
     # GCloud
     . ~/.lib/completion/gcloud/completion.zsh.inc
     . ~/.lib/completion/gcloud/path.zsh.inc
+    # Robot Operating System
+    if [ -d /opt/ros/melodic ]; then
+        . /opt/ros/melodic/setup.zsh
+    fi    
 fi
 
 # Google Cloud SDK
@@ -67,12 +75,11 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
+#if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+#    . /etc/bash_completion
+#fi
 
 # z
 if [ -f ~/.lib/z.sh ]; then
     . ~/.lib/z.sh
 fi
-
