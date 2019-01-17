@@ -11,7 +11,7 @@ fi
 
 if [ -n "$ZSH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "%F{yellow}"; else echo "%F{red}"; fi\`➜%F{yellow}"
-    user="\`if [ $ME == "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
+    user="\`if [ $ME = "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
     default="%F{default}"
     blue="%F{blue}"
     PS1=$s$user' %n@%m'$default':'$blue'$(collapse_pwd)'$default'$ ' 
@@ -22,4 +22,3 @@ elif [ -n "$BASH_VERSION" ]; then
     blue="\\[\\033[34m\\]"
     PS1=$s$user' \u@\h'$default':'$blue'$(collapse_pwd)'$default'$ ' 
 fi
-
