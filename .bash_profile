@@ -62,7 +62,6 @@ if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
 fi    
 
 # Alias definitions
-#-------------------------
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
@@ -70,6 +69,11 @@ fi
 # Prompt
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
+fi
+
+# Host specific settings (if available)
+if [ -f ~/.bash_host_profile ]; then
+    . ~/.bash_host_profile
 fi
 
 # enable programmable completion features (you don't need to enable
