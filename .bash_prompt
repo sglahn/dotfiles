@@ -12,10 +12,14 @@ function collapse_pwd {
             args="-ra"
         fi
         IFS=$DELIMETER read "$args" ADDR <<< "$p"
+            c=0
             for i in "${ADDR[@]}"; do
-            if [ "$i" != "" ]; then
-                r="$r/${i:0:1}"
-            fi
+                if [ "$c" -eq "$LEN" ]; then
+                    r="$r/$i"
+                elif [ "$i" != "" ]; then
+                    r="$r/${i:0:1}"
+                fi
+                c=`expr $c + 1`
          done
     else
         r=$p
