@@ -1,7 +1,30 @@
 #!/usr/bin/env bash
 
 function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
+    p=$(pwd | sed -e "s,^$HOME,~,");
+    DELIMETER='/';
+    LEN=`awk -F"${DELIMETER}" '{print NF-1}' <<< "${p}"`
+    if [ "$LEN" -gt 4 ]; then
+        r=""
+        if [ $1 = "zsh" ]; then
+            args="-rA"
+        else
+            args="-ra"
+        fi
+        IFS=$DELIMETER read "$args" ADDR <<< "$p"
+            c=0
+            for i in "${ADDR[@]}"; do
+                if [ "$c" -eq "$LEN" ]; then
+                    r="$r/$i"
+                elif [ "$i" != "" ]; then
+                    r="$r/${i:0:1}"
+                fi
+                c=`expr $c + 1`
+         done
+    else
+        r=$p
+    fi
+    echo $r
 }
 
 ME=$USER
@@ -11,15 +34,14 @@ fi
 
 if [ -n "$ZSH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "%F{yellow}"; else echo "%F{red}"; fi\`➜%F{yellow}"
-    user="\`if [ $ME == "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
+    user="\`if [ $ME = "root" ]; then echo "%F{red}"; else echo "%F{cyan}"; fi\`";
     default="%F{default}"
     blue="%F{blue}"
-    PS1=$s$user' %n@%m'$default':'$blue'$(collapse_pwd)'$default'$ ' 
+    PS1=$s$user' %n@%m'$default':'$blue'$(collapse_pwd "zsh")'$default'> '
 elif [ -n "$BASH_VERSION" ]; then
     s="\`if [[ \$? = "0" ]]; then echo "\\[\\033[33m\\]"; else echo "\\[\\033[31m\\]"; fi\`➜\\[\\033[33m\\]"
     user="\`if [ $ME == "root" ]; then echo "\\[\\033[31m\\]"; else echo "\\[\\033[36m\\]"; fi\`";
     default="\\[\\033[0m\\]"
     blue="\\[\\033[34m\\]"
-    PS1=$s$user' \u@\h'$default':'$blue'$(collapse_pwd)'$default'$ ' 
+    PS1=$s$user' \u@\h'$default':'$blue'$(collapse_pwd "bash")'$default'> '
 fi
-

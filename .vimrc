@@ -16,17 +16,9 @@ filetype plugin indent on
 " Turn on color syntax highlighting
 syntax on
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+" Color Scheme
+colorscheme 256_noir
 
-" Use the Solarized Dark theme
-set background=dark
-colorscheme solarized
-let g:solarized_termtrans=1
-
-" make backspace work like most other programs
 set backspace=indent,eol,start
 
 """""""""""""""""""""

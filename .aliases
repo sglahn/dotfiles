@@ -247,4 +247,3 @@ function smonitor() { echo "Remember: Type ~. to quit. "; sudo cu -l /dev/cu.SLA
 # Create high CPU load, for 8 processors call "cpumeld 8"
 function cpumeld() { for c in {1..$1}; do yes > /dev/null & done; }
 function cpumeldstop() { killall yes; }
-
