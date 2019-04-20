@@ -218,9 +218,16 @@ fi
 
 # tmux
 #----------------------------
-# tmux
-alias t='tmux'
-# tmux attach
+# start tmux with 4 panes
+function t() {
+    tmux new-session \; \
+        split-window -v \; \
+        split-window -h \; \
+        select-pane -t 0 \; \
+        split-window -h \; \
+        select-pane -t 0 \;
+}
+# tmux attach to session
 alias ta='tmux attach'
 
 # SDK man
