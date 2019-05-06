@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "/Users/sebastianglahn/.zsh/zsh-autosuggestions"]
+	path = /Users/sebastianglahn/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
