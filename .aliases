@@ -38,6 +38,10 @@ if grep --color=auto "a" ~/.aliases &> /dev/null; then
 fi
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+# if nvim is available, prefere nvim over vim
+if type nvim > /dev/null 2>&1; then
+    alias vim=nvim
+fi
 # find shorthand
 function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
 # ps
