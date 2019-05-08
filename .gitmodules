@@ -22,3 +22,6 @@
 [submodule "/Users/sebastianglahn/.zsh/zsh-autosuggestions"]
 	path = /Users/sebastianglahn/.zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".config/nvim/bundle/nerdtree"]
+	path = .config/nvim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
