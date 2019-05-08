@@ -19,8 +19,8 @@
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "/Users/sebastianglahn/.zsh/zsh-autosuggestions"]
-	path = /Users/sebastianglahn/.zsh/zsh-autosuggestions
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule ".config/nvim/bundle/nerdtree"]
 	path = .config/nvim/bundle/nerdtree

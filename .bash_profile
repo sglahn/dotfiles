@@ -61,6 +61,16 @@ if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
     . ~/.sdkman/bin/sdkman-init.sh
 fi    
 
+# Robot Operating System (Melodic Morenia)
+if [ -d /opt/ros/melodic ]; then
+    if [ -n "$BASH_VERSION" ]; then
+        . /opt/ros/melodic/setup.bash
+    fi
+    if [ -n "$ZSH_VERSION" ]; then
+        . /opt/ros/melodic/setup.zsh
+    fi
+fi
+
 # Alias definitions
 if [ -f ~/.aliases ]; then
     . ~/.aliases

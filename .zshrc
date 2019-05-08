@@ -53,12 +53,14 @@ ZSH_THEME="fishy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_profile
+
+# Source plugin
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
