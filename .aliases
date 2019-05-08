@@ -38,6 +38,10 @@ if grep --color=auto "a" ~/.aliases &> /dev/null; then
 fi
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+# if nvim is available, prefere nvim over vim
+if type nvim > /dev/null 2>&1; then
+    alias vim=nvim
+fi
 # find shorthand
 function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
 # ps
@@ -218,10 +222,19 @@ fi
 
 # tmux
 #----------------------------
-# tmux
-alias t='tmux'
-# tmux attach
-alias ta='tmux attach'
+# start tmux with 4 panes
+function t() {
+    tmux new-session -s "${1:-default}"\; \
+        split-window -v \; \
+        split-window -h \; \
+        select-pane -t 0 \; \
+        split-window -h \; \
+        select-pane -t 0 \;   
+}
+# tmux attach to sessionf
+function ta() { tmux attach -t "$1"; }
+# tmux list session
+alias tl='tmux ls'
 
 # SDK man
 #----------------------------
@@ -229,8 +242,9 @@ if type sdk > /dev/null 2>&1; then
     alias usejava8='sdk use java 8.0.181-oracle'
     alias usejava9='sdk use java 9.0.4-open'
     alias usejava10='sdk use java 10.0.2-open'
-    alias usejava11='sdk use java 11.0.1-open'
-    alias usegraal='sdk use java 1.0.0-rc6-graal'
+    alias usejava11='sdk use java 11.0.2-open'
+    alias usejava12='sdk use java 12.0.1-open'
+    alias usegraal='sdk use java 1.0.0-rc9-graal'
 fi
 
 # Show description of HTTP Status Code

@@ -1,24 +1,24 @@
-[submodule ".vim/bundle/goyo.vim"]
-	path = .vim/bundle/goyo.vim
-	url = https://github.com/junegunn/goyo.vim.git
 [submodule ".vim/bundle/mru.vim"]
 	path = .vim/bundle/mru.vim
 	url = https://github.com/vim-scripts/mru.vim.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-rhubarb"]
-	path = .vim/bundle/vim-rhubarb
-	url = https://github.com/tpope/vim-rhubarb.git
-[submodule ".vim/bundle/vim-zenroom2"]
-	path = .vim/bundle/vim-zenroom2
-	url = https://github.com/amix/vim-zenroom2.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/bundle/vim-bracketed-paste"]
+	path = .vim/bundle/vim-bracketed-paste
+	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/w0rp/ale.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "/Users/sebastianglahn/.zsh/zsh-autosuggestions"]
+	path = /Users/sebastianglahn/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
