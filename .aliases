@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
-# for dotfile versioning
+# Collection of aliases and bash functions
+
+# Utilties for dotfile versioning
+#----------------------------
+# Alias for .dotfile repository, see README
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-# Checkout/ Update all configuration Git submodules
+# Checkout/ Update all Git submodules (e.g. Vim Plugins, ...)
 alias configsub='config submodule init && cat .gitmodules | grep  -Eo "\"(.)*\"" | cut -d "\"" -f 2 | xargs -I{} /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --remote {}'
-
-# search aliases
-function finda() { grep --no-filename -i -a1 $@ ~/.aliases  | grep -v '^\s*$' ; }
-
+# Search alias ir function in .aliases
+function finda() { grep --no-filename -i -a1 "$@" ~/.aliases  | grep -v '^\s*$' ; }
+# Portable open
 if [[ "$(uname)" == "Darwin" ]]; then
     generic_open='open'
 elif [[ "$(uname)" == "Linux" ]]; then
@@ -19,34 +22,32 @@ fi
 # Change directory and list content
 function lcd() { cd "$1" && ls; }
 # Create directory and enter it
-function mcd() { mkdir -p "$1" && cd "$1"; }
-#if [ -n "$ZSH_VERSION" ]; then
+function mcd() { mkdir -p "$1" && cd "$1" || return; }
 if [[ "$(uname)" == "Darwin" ]]; then
     colorflag=' -GFh';
-#elif [ -n "$BASH_VERSION" ]; then
 elif [[ "$(uname)" == "Linux" ]]; then
     colorflag=' --color=auto';
 fi    
-# ls
-alias ls="ls "$colorflag
+# Ls
+alias ls="ls $colorflag"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-# grep
+# Grep
 if grep --color=auto "a" ~/.aliases &> /dev/null; then
     alias grep='grep --color=auto'
 fi
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-# if nvim is available, prefere nvim over vim
+# If NeoVim is available prefer NeoVim over Vim
 if type nvim > /dev/null 2>&1; then
     alias vim=nvim
 fi
-# find shorthand
+# Shorthand for find
 function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
-# ps
+# Grep ps
 function psa() { ps aux | grep "$1"; }
-# list and sort folders by size
+# List and sort folders by size
 alias fbysize='du -h -a --max-depth=1 | sort -h'
 
 # Gradle
@@ -56,73 +57,73 @@ alias gw='./gradlew'
 # Gradlew wrapper clean build
 alias gwcb='./gradlew clean build'
 # Gradle dependency insight
-function gwdi() { ./gradlew dependencyInsight --configuration ${2:-compile} --dependency "$1"; }
-# Gradle HTML dependency report
+function gwdi() { ./gradlew dependencyInsight --configuration "${2:-compileClasspath}" --dependency "$1"; }
+# Generate HTML dependency report and open it
 function gwhdr() { ./gradlew htmldependencyReport; $generic_open build/reports/project/dependencies/index.html; }
 
 # Git
 #----------------------------
 # Show outgoing changes, inspired by Mercurials hgout
 alias gout='git log --pretty=oneline --abbrev-commit --graph @{u}.. --stat'
-# Show incmoing changes
+# Show incoming changes
 alias gin='git log --pretty=oneline --abbrev-commit ..@{u} --stat'
-# jump back to to the last branch
+# Jump back to to the last branch
 alias gback='git checkout -'
-# undo commit
+# Undo commit
 alias gundo='git reset HEAD~'
-# git status
+# Git status
 alias gs='git status'
-# git branch
+# Git branch
 alias gb='git branch -vv'
-# git diff
+# Git diff
 alias gd='git diff'
-# git diff last commit
+# Git diff last commit
 alias gdl='git diff --cached HEAD^'
-# git push
+# Git push
 alias gph='git push'
-# git pull
+# Git pull
 alias gpl='git pull'
-# git commit
+# Git commit
 alias gcm='git commit -m'
-# remove all local branches which remote equivalent is gone
+# Remove all local branches which remote equivalent is gone
 function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }
 alias g='git'
-# git checkout
+# Git checkout
 alias gc='git checkout'
-# git clone and display/change credentials
+# Git clone and display/change credentials
 function gclone() { 
     url=$1;
     git clone "$url";
-    base=$(basename $url);
+    base=$(basename "$url");
     folder=${base%.*};
-    cd $folder;
-    u=`git config user.name`; 
-    e=`git config user.email`;
+    cd "$folder" || return;
+    u=$(git config user.name); 
+    e=$(git config user.email);
     printf '%s ' "Use $u and $e for this repository? (y/n):"
-    read confirm;
+    read -r confirm;
     if [[ $confirm == [yY] ]]; then
         cd .. && return 0;
     fi;    
     printf '%s ' 'Enter username:'
-    read u
+    read -r u
     printf '%s ' 'Enter email:'
-    read e;
+    read -r e;
     git config user.name "$u";
     git config user.email "$e";
     cd ..;
 }
-# git fetch
+# Git fetch
 alias gf='git fetch'
-# get JIRA ticket number from branch name
-function gjira() { git symbolic-ref --short -q HEAD  | grep -w -Eo "[A-Z0-9]{1,10}-?[A-Z0-9]+-\d+" ; 
-    if [[ $? != 0 ]]; 
+# Get JIRA ticket number from branch name
+function gjira() {
+    if [[ $(git symbolic-ref --short -q HEAD  | grep -w -Eo "[A-Z0-9]{1,10}-?[A-Z0-9]+-\d+") != 0 ]]; 
         then echo "Error: Failed to retrieve Jira Ticket Id from branch name!"; 
         return 1;
     fi; }
-# git commit with jira ticket id as prefix commit message"
-function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m $id": "$1; else echo "Error: Failed to retieve Jira Ticket Id from branch name!"; return 1; fi; }
-# git commit with "NO-TICKET:" as prefix in commit message
-function gcmn() { git commit -m "NO-TICKET: "$1; }
+# Git commit with jira ticket id as prefix commit message"
+function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m "$id: $1"; else echo "Error: Failed to retieve Jira Ticket Id from branch name!"; return 1; fi; }
+# Git commit with "NO-TICKET:" as prefix in commit message
+function gcmn() { git commit -m "NO-TICKET: $1"; }
 # git add all
 alias gaa='git add .'
 # git add 
@@ -149,13 +150,13 @@ alias di='docker images'
 # docker build
 alias db='docker build .'
 # stop all containers
-function dstop() { docker stop $(docker ps -q); }
+function dstop() { docker stop "$(docker ps -q)"; }
 # remove all containers, except volume containers (vc_*)
-function drm() { docker rm -v $(docker ps -a -q | grep -v -E $(docker ps -a -f name=vc_* -q  | paste -sd "|" -)); }
+function drm() { docker rm -v "$(docker ps -a -q | grep -v -E "$(docker ps -a -f name=vc_* -q  | paste -sd "|" -)")"; }
 # remove all images
-function drmi() { docker rmi $(docker images -q); }
+function drmi() { docker rmi "$(docker images -q)"; }
 # remove all dangeling volumes
-function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
+function drmv() { docker volume rm "$(docker volume ls -q -f dangling=true)"; }
 
 # Docker Compose
 #----------------------------
