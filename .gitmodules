@@ -25,6 +25,6 @@
 [submodule ".config/nvim/bundle/nerdtree"]
 	path = .config/nvim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "/Users/sebastianglahn/.config/nvim/bundle/ale"]
-	path = /Users/sebastianglahn/.config/nvim/bundle/ale
+[submodule ".config/nvim/bundle/ale"]
+	path = .config/nvim/bundle/ale
 	url = https://github.com/w0rp/ale.git
