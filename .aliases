@@ -152,13 +152,13 @@ alias di='docker images'
 # docker build
 alias db='docker build .'
 # stop all containers
-function dstop() { docker stop "$(docker ps -q)"; }
-# remove all containers, except volume containers (vc_*)
-function drm() { docker rm -v "$(docker ps -a -q | grep -v -E "$(docker ps -a -f name=vc_* -q  | paste -sd "|" -)")"; }
+function dstop() { docker stop $(docker ps -q); }
+# remove all containers
+function drm() { docker rm -f -v $(docker ps -a -q); }
 # remove all images
-function drmi() { docker rmi "$(docker images -q)"; }
+function drmi() { docker rmi -f $(docker images -q); }
 # remove all dangeling volumes
-function drmv() { docker volume rm "$(docker volume ls -q -f dangling=true)"; }
+function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
 
 # Docker Compose
 #----------------------------
