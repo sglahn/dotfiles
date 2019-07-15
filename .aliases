@@ -90,6 +90,8 @@ function gprune() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' |
 alias g='git'
 # Git checkout
 alias gc='git checkout'
+# Git show history of specific file
+function ghist() { git log -p -- "$1"; }
 # Git clone and display/change credentials
 function gclone() { 
     url=$1;
