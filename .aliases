@@ -49,6 +49,8 @@ function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
 function psa() { ps aux | grep "$1"; }
 # List and sort folders by size
 alias fbysize='du -h -a --max-depth=1 | sort -h'
+# grep history
+function hist() { history | grep "$1"; }
 
 # Gradle
 #----------------------------
