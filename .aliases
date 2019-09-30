@@ -49,6 +49,8 @@ function f() { find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
 function psa() { ps aux | grep "$1"; }
 # List and sort folders by size
 alias fbysize='du -h -a --max-depth=1 | sort -h'
+# grep history
+function hist() { history | grep "$1"; }
 
 # Gradle
 #----------------------------
@@ -116,14 +118,6 @@ function gclone() {
 }
 # Git fetch
 alias gf='git fetch'
-# Get JIRA ticket number from branch name
-function gjira() {
-    if [[ $(git symbolic-ref --short -q HEAD  | grep -w -Eo "[A-Z0-9]{1,10}-?[A-Z0-9]+-\d+") != 0 ]]; 
-        then echo "Error: Failed to retrieve Jira Ticket Id from branch name!"; 
-        return 1;
-    fi; }
-# Git commit with jira ticket id as prefix commit message"
-function gcmj() { id=$(gjira); if [[ $? == 0 ]]; then git commit -m "$id: $1"; else echo "Error: Failed to retieve Jira Ticket Id from branch name!"; return 1; fi; }
 # Git commit with "NO-TICKET:" as prefix in commit message
 function gcmn() { git commit -m "NO-TICKET: $1"; }
 # git add all
@@ -162,37 +156,12 @@ function drmv() { docker volume rm $(docker volume ls -q -f dangling=true); }
 
 # Docker Compose
 #----------------------------
-# docker-compose
-alias dco='docker-compose'
-# search for folder in ~/.docker-compose
-function findGlobalComposeFile() {
-    if [ -d ~/.docker-compose ]; then
-        find ~/.docker-compose -iname $1;
-    fi
-}
-function findComposeFile() { 
-    if [ -z $1 ]; then
-        f='docker-compose.yml';
-    else
-       f=$(findGlobalComposeFile $1); 
-       if [[ -z $f ]]; 
-           then f=$1; 
-       else
-           f=$f"/docker-compose.yml";
-       fi; 
-    fi;   
-    echo $f;
-}
-# docker-compose logs
-function dcol() { f=$(findComposeFile $1); docker-compose -f $f logs -f --tail 100; }
-# docker-compose stop
-function dcos() { f=$(findComposeFile $1); docker-compose -f $f stop; }
-# docker-compose up
-function dcou() { f=$(findComposeFile $1); docker-compose -f $f up -d; }
+# Short docker-compose
+alias doc='docker-compose'
 
 # Kubernetes
 #----------------------------
-# SHhort
+# Shorter
 alias k='kubectl'
 # Change namespace
 function kcns() { kubectl config set-context $(kubectl config current-context) --namespace=$1; } 
@@ -246,7 +215,8 @@ if type sdk > /dev/null 2>&1; then
     alias usejava9='sdk use java 9.0.4-open'
     alias usejava10='sdk use java 10.0.2-open'
     alias usejava11='sdk use java 11.0.2-open'
-    alias usejava12='sdk use java 12.0.1-open'
+    alias usejava12='sdk use java 12.0.2-open'
+    alias usejava13='sdk use java 13.ea.33-open'
     alias usegraal='sdk use java 1.0.0-rc9-graal'
 fi
 
