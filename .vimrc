@@ -17,7 +17,8 @@ filetype plugin indent on
 syntax on
 
 " Color Scheme
-colorscheme 256_noir
+" colorscheme 256_noir
+colorscheme molokai
 
 set backspace=indent,eol,start
 
