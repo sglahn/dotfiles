@@ -6,7 +6,7 @@ My setup is inspired by the this [article](http://developer.atlassian.com/blog/2
 - Supports both Ubuntu and OS X
 - Supports both Bash and Zsh
 - Aliases for Git, Docker, Gradle, ...
-- Vim configurat	ion and plugins
+- Vim configuration and plugins
 - Tmux configuration
 - Custom bash prompt
 
