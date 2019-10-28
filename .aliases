@@ -183,10 +183,13 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" ]]; then
     alias ip='hostname -I'
 fi
+
 # Get Wan IP
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
-# Come back when online
+
+# Comes back when online
 function online() { while true; do wanip > /dev/null 2>&1; if [ $? -eq 0 ]; then echo "online :)"; break; fi; echo "offline..."; sleep 10; done; }
+
 # serve current directory via http
 if type python3 > /dev/null 2>&1; then
     function serve() { python3 -m http.server; }
