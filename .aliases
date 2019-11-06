@@ -175,6 +175,10 @@ alias mci='mvn clean install'
 # Maven dependency tree
 alias mdep='mvn dependency:tree'
 
+# Ansible
+#----------------------------
+alias ap='ansible-playbook'
+
 # Network
 #----------------------------
 # list all IPs
@@ -219,7 +223,7 @@ if type sdk > /dev/null 2>&1; then
     alias usejava10='sdk use java 10.0.2-open'
     alias usejava11='sdk use java 11.0.2-open'
     alias usejava12='sdk use java 12.0.2-open'
-    alias usejava13='sdk use java 13.ea.33-open'
+    alias usejava13='sdk use java 13.0.1-open'
     alias usegraal='sdk use java 1.0.0-rc9-graal'
 fi
 
@@ -234,6 +238,6 @@ alias c=clear
 
 function smonitor() { echo "Remember: Type ~. to quit. "; sudo cu -l /dev/cu.SLAB_USBtoUART -s 115200; }
 
-# Create high CPU load, for 8 processors call "cpumeld 8"
+# Create high CPU load, e.g. for 8 processors call "cpumeld 8"
 function cpumeld() { for c in {1..$1}; do yes > /dev/null & done; }
 function cpumeldstop() { killall yes; }
