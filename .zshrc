@@ -62,8 +62,8 @@ source ~/.bash_profile
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 autoload -U colors; colors
-source ~/.zsh/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+#source ~/.zsh/zsh-kubectl-prompt/kubectl.zsh
+#RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
 # User configuration
 
