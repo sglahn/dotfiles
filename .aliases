@@ -227,7 +227,7 @@ if type sdk > /dev/null 2>&1; then
     alias usejava11='sdk use java 11.0.2-open'
     alias usejava12='sdk use java 12.0.2-open'
     alias usejava13='sdk use java 13.0.2-open'
-    alias usejava14='sdk use java 14.0.0-open'
+    alias usejava14='sdk use java 14.0.1-open'
 fi
 
 # Show description of HTTP Status Code
@@ -244,3 +244,6 @@ function smonitor() { echo "Remember: Type ~. to quit. "; sudo cu -l /dev/cu.SLA
 # Create high CPU load, e.g. for 8 processors call "cpumeld 8"
 function cpumeld() { for c in {1..$1}; do yes > /dev/null & done; }
 function cpumeldstop() { killall yes; }
+
+# Decode jwt token
+function jwt() { jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1" }
