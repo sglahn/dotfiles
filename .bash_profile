@@ -25,6 +25,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Shell specific settings
 if [ -n "$BASH_VERSION" ]; then
+    source <(kubectl completion bash)
     # Git
     if [ -f ~/.lib/completion/git/git-bash-completion.bash ]; then
         . ~/.lib/completion/git/git-bash-completion.bash
@@ -34,7 +35,6 @@ if [ -n "$BASH_VERSION" ]; then
         __git_complete gm __git_merge
     fi
     # GCloud
-    . ~/.lib/completion/gcloud/kubectl.completion.bash
     . ~/.lib/completion/gcloud/path.bash.inc
     # Robot Operating System
     if [ -d /opt/ros/melodic ]; then
@@ -42,6 +42,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi    
 fi    
 if [ -n "$ZSH_VERSION" ]; then
+    source <(kubectl completion zsh)
     # GCloud
     . ~/.lib/completion/gcloud/completion.zsh.inc
     . ~/.lib/completion/gcloud/path.zsh.inc

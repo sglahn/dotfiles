@@ -167,6 +167,7 @@ alias k='kubectl'
 function kcns() { kubectl config set-context $(kubectl config current-context) --namespace=$1; } 
 # Print current namespace
 alias kns='kubectl config view | grep namespace:'
+alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
 
 # Maven
 #----------------------------
@@ -246,4 +247,4 @@ function cpumeld() { for c in {1..$1}; do yes > /dev/null & done; }
 function cpumeldstop() { killall yes; }
 
 # Decode jwt token
-function jwt() { jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1" }
+function jwt() { jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1"; }
