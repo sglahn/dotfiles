@@ -94,28 +94,6 @@ alias g='git'
 alias gc='git checkout'
 # Git show history of specific file
 function ghist() { git log -p -- "$1"; }
-# Git clone and display/change credentials
-function gclone() { 
-    url=$1;
-    git clone "$url";
-    base=$(basename "$url");
-    folder=${base%.*};
-    cd "$folder" || return;
-    u=$(git config user.name); 
-    e=$(git config user.email);
-    printf '%s ' "Use $u and $e for this repository? (y/n):"
-    read -r confirm;
-    if [[ $confirm == [yY] ]]; then
-        cd .. && return 0;
-    fi;    
-    printf '%s ' 'Enter username:'
-    read -r u
-    printf '%s ' 'Enter email:'
-    read -r e;
-    git config user.name "$u";
-    git config user.email "$e";
-    cd ..;
-}
 # Git fetch
 alias gf='git fetch'
 # Git commit with "NO-TICKET:" as prefix in commit message
