@@ -25,7 +25,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Shell specific settings
 if [ -n "$BASH_VERSION" ]; then
-    source <(kubectl completion bash)
+    if type kubectl > /dev/null 2>&1; then
+        source <(kubectl completion bash)
+    fi    
     # Git
     if [ -f ~/.lib/completion/git/git-bash-completion.bash ]; then
         . ~/.lib/completion/git/git-bash-completion.bash
@@ -42,7 +44,9 @@ if [ -n "$BASH_VERSION" ]; then
     fi    
 fi    
 if [ -n "$ZSH_VERSION" ]; then
-    source <(kubectl completion zsh)
+    if type kubectl > /dev/null 2>&1; then
+        source <(kubectl completion zsh)
+    fi    
     # GCloud
     . ~/.lib/completion/gcloud/completion.zsh.inc
     . ~/.lib/completion/gcloud/path.zsh.inc
