@@ -102,3 +102,7 @@ fi
 if [ -f ~/.lib/z.sh ]; then
     . ~/.lib/z.sh
 fi
+
+# OpenScad Library path
+export OPENSCADPATH=~/Settings/OpenScad/libraries
+
