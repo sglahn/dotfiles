@@ -201,7 +201,7 @@ function dlog() { journalctl -b -a -f -n 30 -u "$1"; }
 # SDK man
 #----------------------------
 if type sdk > /dev/null 2>&1; then
-    alias usejava8='sdk use java 8.0.265.hs-adpt'
+    alias usejava8='sdk use java 8.0.265-open'
     alias usejava9='sdk use java 9.0.4-open'
     alias usejava10='sdk use java 10.0.2-open'
     alias usejava11='sdk use java 11.0.2-open'
