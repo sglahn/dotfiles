@@ -18,7 +18,7 @@ syntax on
 
 " Color Scheme
 " colorscheme 256_noir
-colorscheme molokai
+" colorscheme molokai
 
 set backspace=indent,eol,start
 
