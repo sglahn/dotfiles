@@ -106,3 +106,5 @@ fi
 # OpenScad Library path
 export OPENSCADPATH=~/Settings/OpenScad/libraries
 
+# Rust
+. "$HOME/.cargo/env"
