@@ -107,4 +107,6 @@ fi
 export OPENSCADPATH=~/Settings/OpenScad/libraries
 
 # Rust
-. "$HOME/.cargo/env"
+if [ -f ~/.cargo ]; then
+    . ~/.cargo/env
+fi
