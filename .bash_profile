@@ -19,7 +19,8 @@ fi
 # Environemnt
 #-------------------------
 export EDITOR=/usr/bin/vim
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:$HOME/.rd/bin
+export PATH=$PATH:/usr/local/sbin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -110,3 +111,8 @@ export OPENSCADPATH=~/Settings/OpenScad/libraries
 if [ -f ~/.cargo ]; then
     . ~/.cargo/env
 fi
+
+# Ruby
+. $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
+. $(brew --prefix)/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.1.2
