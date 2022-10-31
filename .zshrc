@@ -108,3 +108,6 @@ export LANG=en_US.UTF-8
 # The next line enables shell command completion for gcloud.
 #if [ -f '/Users/sebastianglahn/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/sebastianglahn/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 unsetopt share_history
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
