@@ -113,6 +113,8 @@ if [ -f ~/.cargo ]; then
 fi
 
 # Ruby
-. $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-. $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.1.2
+if [[ "$(uname)" == "Darwin" ]]; then
+    . $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
+    . $(brew --prefix)/opt/chruby/share/chruby/auto.sh
+    chruby ruby-3.1.2
+fi    
