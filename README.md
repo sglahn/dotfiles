@@ -57,6 +57,6 @@ brew install reattach-to-user-namespace
 SDKMAN! is already configured in the .bash_profile and works for zsh and bash. To use it it has to be [installed](http://sdkman.io/install.html). 
 
 ## The Font I Use
-[Fire Code](https://github.com/tonsky/FiraCode)
+[Fira Code](https://github.com/tonsky/FiraCode)
 
 ## License
