@@ -21,6 +21,7 @@ fi
 export EDITOR=/usr/bin/vim
 export PATH=$PATH:$HOME/bin:$HOME/.rd/bin
 export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/opt/homebrew/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
