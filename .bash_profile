@@ -22,6 +22,7 @@ export EDITOR=/usr/bin/vim
 export PATH=$PATH:$HOME/bin:$HOME/.rd/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/opt/homebrew/bin
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -117,5 +118,5 @@ fi
 if [[ "$(uname)" == "Darwin" ]]; then
     . $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
     . $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-    chruby ruby-3.1.2
+    chruby ruby-3.2.2
 fi    
