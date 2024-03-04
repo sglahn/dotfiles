@@ -120,3 +120,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
     . $(brew --prefix)/opt/chruby/share/chruby/auto.sh
     chruby ruby-3.2.2
 fi    
+
+# ROS humble
+export AMENT_CURRENT_PREFIX=/opt/ros/humble
+source /opt/ros/humble/local_setup.sh
+
