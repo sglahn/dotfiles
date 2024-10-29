@@ -22,6 +22,7 @@ export EDITOR=/usr/bin/vim
 export PATH=$PATH:$HOME/bin:$HOME/.rd/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/opt/homebrew/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -60,6 +61,8 @@ if [ -n "$ZSH_VERSION" ]; then
 fi
 
 # Google Cloud SDK
+# FIX for gcloud sdk (https://stackoverflow.com/questions/77316716/gcloud-modulenotfounderror-no-module-named-imp)
+export CLOUDSDK_PYTHON=$(which python3.11)
 GCLOUD_PATH=~/tools/google-cloud-sdk/bin
 if [ -d ~/tools/google-cloud-sdk/bin ]; then export PATH=$PATH:$GCLOUD_PATH; fi;
 
