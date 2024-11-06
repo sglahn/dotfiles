@@ -112,8 +112,7 @@ unsetopt share_history
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/sebastian/Software/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '/home/sebastian/Software/gcloud/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/sebastian/Software/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/sebastian/Software/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '~/Software/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Software/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
