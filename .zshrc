@@ -115,4 +115,4 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # The next line enables shell command completion for gcloud.
 if [ -f '~/Software/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Software/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+if [ -f '/opt/homebrew/opt/asdf/libexec/asdf.sh' ]; then . /opt/homebrew/opt/asdf/libexec/asdf.sh; fi
