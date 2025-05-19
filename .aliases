@@ -205,6 +205,7 @@ if type sdk > /dev/null 2>&1; then
     alias usejava11='sdk use java 11.0.2-open'
     alias usejava17='sdk use java 17.0.1-open'
     alias usejava21='sdk use java 21.0.1-open'
+    alias usejava24='sdk use java 24-open'
 fi
 
 # Show description of HTTP Status Code

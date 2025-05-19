@@ -126,7 +126,9 @@ fi
 
 # ROS humble
 export AMENT_CURRENT_PREFIX=/opt/ros/humble
-source /opt/ros/humble/local_setup.sh
+if [ -f /opt/ros/humble/local_setup.sh ]; then
+    . /opt/ros/humble/local_setup.sh
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
